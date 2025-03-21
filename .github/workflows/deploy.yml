@@ -36,9 +36,11 @@ jobs:
         env:
           VITE_GOOGLE_CLIENT_ID: ${{ secrets.GCLIENT }}
 
+      # Replace the upload-pages-artifact step with a direct call to upload-artifact v2
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
+          name: pages-artifact
           path: './dist'
 
       - name: Deploy to GitHub Pages
